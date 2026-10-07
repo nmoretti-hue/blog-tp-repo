@@ -1,0 +1,116 @@
+{% load static %}<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>CV - Nicolas Moretti</title>
+  <meta name="description" content="Curriculum vitae de Nicolas Moretti">
+  <link rel="icon" href="{% static 'portfolio/favicon.svg' %}" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}">
+</head>
+<body>
+  <main class="cv-page">
+    <header class="cv-header">
+      <div>
+        <p class="cv-kicker">CURRICULUM VITAE</p>
+        <h1>Nicolas Moretti</h1>
+        <p class="cv-role">Estudiante de programacion | Desarrollador web en formacion</p>
+      </div>
+      <img src="{% static 'portfolio/imagenes/logohuergo.png' %}" width="110" height="110" class="cv-photo" alt="Logo de la Escuela Tecnica Huergo">
+    </header>
+
+    <div class="cv-layout">
+      <aside class="cv-sidebar">
+        <section class="cv-section">
+          <h2>Contacto</h2>
+          <ul class="cv-list">
+            <li><strong>Email</strong><a href="mailto:nmoretti@alumno.huergo.edu.ar">nmoretti@alumno.huergo.edu.ar</a></li>
+            <li><strong>Portfolio</strong><a href="{% url 'portfolio:home' %}">Mi portfolio web</a></li>
+            <li><strong>GitHub</strong><a href="https://github.com/nmoretti-hue" target="_blank" rel="noopener">github.com/nmoretti-hue</a></li>
+            <li><strong>Ubicacion</strong>Buenos Aires, Argentina</li>
+          </ul>
+        </section>
+
+        <section class="cv-section">
+          <h2>Habilidades</h2>
+          <ul class="cv-tags">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Python</li>
+            <li>Bootstrap</li>
+            <li>Git</li>
+            <li>Diseño de sprites</li>
+          </ul>
+        </section>
+
+        <section class="cv-section">
+          <h2>Fortalezas</h2>
+          <ul class="cv-bullets">
+            <li>Aprendizaje continuo</li>
+            <li>Trabajo en equipo</li>
+            <li>Organizacion de proyectos</li>
+            <li>Creatividad visual</li>
+          </ul>
+        </section>
+      </aside>
+
+      <div class="cv-content">
+        <section class="cv-section">
+          <h2>Perfil profesional</h2>
+          <p>Estudiante de la Escuela Tecnica Huergo con interes en el desarrollo web y la programacion. Me gusta transformar ideas en proyectos funcionales, cuidar la presentacion visual y aprender nuevas herramientas a traves de la practica.</p>
+        </section>
+
+        <section class="cv-section">
+          <h2>Formacion</h2>
+          <article class="cv-entry">
+            <div class="cv-entry-heading">
+              <h3>Escuela Tecnica Huergo</h3>
+              <span>En curso</span>
+            </div>
+            <p>Orientacion en Programacion</p>
+            <p>Formacion tecnica basada en proyectos de HTML, CSS, Python y desarrollo de soluciones interactivas.</p>
+          </article>
+        </section>
+
+        <section class="cv-section">
+          <h2>Proyectos destacados</h2>
+          <article class="cv-entry">
+            <div class="cv-entry-heading">
+              <h3>Juego del Calamar</h3>
+              <a href="{% url 'portfolio:proyecto' 'juego-del-calamar' %}">Ver proyecto</a>
+            </div>
+            <p>Proyecto grupal presentado en la ExpoHuergo. Participacion en la creacion de sprites y del menu.</p>
+          </article>
+          <article class="cv-entry">
+            <div class="cv-entry-heading">
+              <h3>Pokemon</h3>
+              <a href="{% url 'portfolio:proyecto' 'pokemon' %}">Ver proyecto</a>
+            </div>
+            <p>Trabajo practico desarrollado para aplicar conceptos de programacion y presentacion de un producto.</p>
+          </article>
+          <article class="cv-entry">
+            <div class="cv-entry-heading">
+              <h3>Reproductor de musica</h3>
+              <a href="{% url 'portfolio:proyecto' 'reproductor-de-musica' %}">Ver proyecto</a>
+            </div>
+            <p>Interfaz de un reproductor con busqueda y organizacion visual de contenido.</p>
+          </article>
+        </section>
+
+        <section class="cv-section">
+          <h2>Objetivo</h2>
+          <p>Seguir creciendo como desarrollador, participar en proyectos desafiantes y sumar experiencia construyendo interfaces claras, creativas y faciles de usar.</p>
+        </section>
+      </div>
+    </div>
+
+    <footer class="cv-footer">
+      <a href="{% url 'portfolio:home' %}">Volver al portfolio</a>
+      <a class="cv-print-button" href="{% static 'portfolio/CV-Nicolas-Moretti.pdf' %}" download>Descargar CV en PDF</a>
+    </footer>
+  </main>
+
+</body>
+</html>

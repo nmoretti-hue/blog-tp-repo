@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Descripción - Mi portfolio{% endblock %}
+{% block content %}
+    <main class="container descripcion-container">
+
+      <div class="text-center mb-5">
+        <img src="{% static 'portfolio/imagenes/logohuergo.png' %}" width="120" height="120" class="img-fluid rounded-circle perfil-img" alt="logo del huergo">
+        <h1>Sobre Mí</h1>
+        <p class="subtitulo">Estudio programación en el Huergo</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <section class="card-descripcion mb-4">
+            <h2>¿Quién soy?</h2>
+            <p class="texto-card">
+              Soy Nicolás Moretti y estudio en el Huergo. Acá subo los proyectos que hago
+              en clase y las páginas que voy armando.
+            </p>
+          </section>
+
+          <section class="card-descripcion mb-4">
+            <h2>Habilidades</h2>
+            <div class="skills-container">
+              <span class="skill-badge"><i class="fa-brands fa-html5" aria-hidden="true"></i>HTML</span>
+              <span class="skill-badge"><i class="fa-solid fa-palette" aria-hidden="true"></i>Sprites</span>
+              <span class="skill-badge"><i class="fa-brands fa-python" aria-hidden="true"></i>Python</span>
+              <span class="skill-badge"><i class="fa-brands fa-bootstrap" aria-hidden="true"></i>Bootstrap</span>
+              <span class="skill-badge"><i class="fa-brands fa-git-alt" aria-hidden="true"></i>Git</span>
+              <span class="skill-badge"><i class="fa-brands fa-css3-alt" aria-hidden="true"></i>CSS</span>
+            </div>
+          </section>
+
+          <section class="card-descripcion mb-4">
+            <h2>Formación</h2>
+            <p class="texto-card">
+              Escuela Técnica Huergo — Orientación en Programación<br>
+              Hago proyectos y trabajos para las clases de programación.
+            </p>
+          </section>
+
+          <section class="card-descripcion">
+            <h2>Contacto</h2>
+            <p class="texto-card">
+              Email: <a href="mailto:nmoretti@alumno.huergo.edu.ar">nmoretti@alumno.huergo.edu.ar</a>
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
+{% endblock %}

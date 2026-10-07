@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ proyecto.titulo|title }} - Mi portfolio{% endblock %}
+{% block content %}
+  <main>
+    <section class="text-center" aria-labelledby="proyecto-titulo">
+      <h1 id="proyecto-titulo">{{ proyecto.titulo }}</h1>
+      <p>{{ proyecto.estado }}{% if proyecto.colaboradores %} · Con {{ proyecto.colaboradores }}{% endif %}</p>
+      <p id="description">{{ proyecto.descripcion|linebreaksbr }}</p>
+      <a class="project-button" href="{{ proyecto.enlace }}" target="_blank" rel="noopener noreferrer">Ver proyecto</a>
+    </section>
+
+    {% with imagenes=proyecto.imagenes %}
+    {% if imagenes %}
+    <div class="d-flex justify-content-center my-4">
+      <div id="carouselProyecto" class="carousel slide carrusel-grande" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          {% for imagen in imagenes %}
+            <button type="button" data-bs-target="#carouselProyecto" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+          {% endfor %}
+        </div>
+        <div class="carousel-inner">
+          {% for imagen in imagenes %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+              {% if imagen.imagen %}
+                <img src="{{ imagen.imagen.url }}" class="d-block w-100 carrusel-img" alt="{{ imagen.alt }}">
+              {% else %}
+                <img src="{% static 'portfolio/imagenes/'|add:imagen.archivo_estatico %}" class="d-block w-100 carrusel-img" alt="{{ imagen.alt }}">
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselProyecto" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselProyecto" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    {% endif %}
+    {% endwith %}
+  </main>
+{% endblock %}

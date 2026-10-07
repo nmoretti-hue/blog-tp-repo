@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <main>
+    <section class="text-center" id="home">
+        <img src="{% static 'portfolio/imagenes/logohuergo.png' %}" width="200" height="200" class="img-fluid" alt="logo del huergo">
+        <h1>El portfolio de Nico</h1>
+        <p id="description">Bienvenido a mi pagina</p>
+        <a class="cv-button" href="{% url 'portfolio:cv' %}" target="_blank">Ver CV completo</a>
+    </section>
+    <section class="text-center" aria-labelledby="proyectos-titulo">
+      <h2 id="proyectos-titulo" class="section-title">Mis proyectos</h2>
+      <p>Estos son los proyectos en los que trabajé.</p>
+      <div class="project-list">
+        {% for item in proyectos_menu %}
+          <a class="project-card" href="{% url 'portfolio:proyecto' item.slug %}">
+            <strong>{{ item.titulo }}</strong>
+            <span>{{ item.estado }}{% if item.colaboradores %} · Con {{ item.colaboradores }}{% endif %}</span>
+          </a>
+        {% empty %}
+          <p>Todavía no hay proyectos publicados.</p>
+        {% endfor %}
+      </div>
+    </section>
+    <section class="text-center" aria-labelledby="sobre-mi-titulo">
+      <h2 id="sobre-mi-titulo" class="section-title">Sobre mi</h2>
+      <p>Conoce mi formacion, mis habilidades y las tecnologias que estoy aprendiendo.</p>
+      <a class="cv-button" href="{% url 'portfolio:description' %}">Conocerme mejor</a>
+    </section>
+  </main>
+{% endblock %}
