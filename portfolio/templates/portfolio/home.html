@@ -11,16 +11,33 @@
     <section class="text-center" aria-labelledby="proyectos-titulo">
       <h2 id="proyectos-titulo" class="section-title">Mis proyectos</h2>
       <p>Estos son los proyectos en los que trabajé.</p>
-      <div class="project-list">
+      <div class="home-posts">
         {% for item in proyectos_menu %}
-          <a class="project-card" href="{% url 'portfolio:proyecto' item.slug %}">
+          <a class="home-post" href="{{ item.get_absolute_url }}">
             <strong>{{ item.titulo }}</strong>
-            <span>{{ item.estado }}{% if item.colaboradores %} · Con {{ item.colaboradores }}{% endif %}</span>
+            <span>{{ item.get_estado_display }}{% if item.colaboradores %} · Con {{ item.colaboradores }}{% endif %}</span>
           </a>
         {% empty %}
           <p>Todavía no hay proyectos publicados.</p>
         {% endfor %}
       </div>
+    </section>
+    <section class="text-center" aria-labelledby="blog-titulo">
+      <h2 id="blog-titulo" class="section-title">Blog</h2>
+      {% if ultimos_posts %}
+        <p>Lo ultimo que escribi:</p>
+        <div class="home-posts">
+          {% for post in ultimos_posts %}
+            <a class="home-post" href="{{ post.get_absolute_url }}">
+              <strong>{{ post.titulo }}</strong>
+              <span>{{ post.fecha_publicacion|date:"j M Y" }}</span>
+            </a>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p>Todavia no hay entradas publicadas.</p>
+      {% endif %}
+      <a class="cv-button" href="{% url 'blog:post_list' %}">Ir al blog</a>
     </section>
     <section class="text-center" aria-labelledby="sobre-mi-titulo">
       <h2 id="sobre-mi-titulo" class="section-title">Sobre mi</h2>

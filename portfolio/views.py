@@ -1,11 +1,11 @@
-from django.http import Http404
-from django.shortcuts import render
-
-from .proyectos import PROYECTOS
+from django.shortcuts import get_object_or_404, render
+from blog.models import Post
+from .models import Proyecto
 
 
 def home(request):
-    return render(request, "portfolio/home.html")
+    ultimos_posts = Post.objects.publicados()[:3]
+    return render(request, "portfolio/home.html", {"ultimos_posts": ultimos_posts})
 
 
 def description(request):
@@ -17,7 +17,5 @@ def cv(request):
 
 
 def proyecto(request, slug):
-    datos = PROYECTOS.get(slug)
-    if datos is None:
-        raise Http404("Proyecto no encontrado")
+    datos = get_object_or_404(Proyecto.objects.prefetch_related("imagenes"), slug=slug, visible=True)
     return render(request, "portfolio/proyecto.html", {"proyecto": datos})

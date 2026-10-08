@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'portfolio.apps.PortfolioConfig',
+    'blog.apps.BlogConfig',
     'polls.apps.PollsConfig',
     'debug_toolbar',
     'django.contrib.admin',
@@ -121,9 +122,23 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# Archivos multimedia subidos desde el admin (imagenes y videos del blog)
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# Autenticacion de usuarios que comentan
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'blog:post_list'
+LOGOUT_REDIRECT_URL = 'blog:post_list'
+
 # django-debug-toolbar (parte 8 del tutorial)
 INTERNAL_IPS = ['127.0.0.1']
 
+
+# Email
+# https://docs.djangoproject.com/en/5.2/topics/email/#topic-email-configuration
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Mantiene las claves primarias del proyecto original en Django 5.2.
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

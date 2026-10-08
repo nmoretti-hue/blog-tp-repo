@@ -1,11 +1,11 @@
 # Portfolio de Nicolás Moretti
 
-Primer avance en Django: las páginas del portfolio y las encuestas del tutorial.
-Todavía no tiene blog, registro de lectores ni proyectos editables desde el admin.
+Página personal hecha con Django. Tiene mis proyectos, un blog y la app de encuestas del tutorial.
 
-## Para abrirlo
+## Para abrirla
 
-Desde la carpeta donde está `manage.py`:
+Extraé el ZIP en una carpeta nueva. La base incluida conserva mi cuenta y las entradas del blog.
+Abrí una terminal donde está `manage.py` y ejecutá:
 
 ```bash
 python -m pip install -r requirements.txt
@@ -13,36 +13,47 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-- Portfolio: http://127.0.0.1:8000/
+- Inicio: http://127.0.0.1:8000/
+- Blog: http://127.0.0.1:8000/blog/
+- Admin: http://127.0.0.1:8000/admin/
 - Encuestas: http://127.0.0.1:8000/polls/
-- Admin del tutorial: http://127.0.0.1:8000/admin/
 
-Para usar el admin, creá tu cuenta con `python manage.py createsuperuser`.
-Esta copia no incluye una base de datos ni una cuenta preconfigurada.
+Si empezás con una base vacía, creá tu cuenta con:
+
+```bash
+python manage.py createsuperuser
+python manage.py cargar_ejemplos
+```
+
+`cargar_ejemplos` carga las dos entradas del blog y no las duplica si ya existen.
+
+## Qué puedo editar
+
+En el admin puedo agregar entradas, subir imágenes y videos, y borrar comentarios.
+Los lectores se pueden registrar para comentar.
+
+En **Portfolio → Proyectos** puedo cambiar los textos, enlaces, imágenes, estado y orden.
+Los proyectos aparecen en el inicio y en el menú. Zaccaria está en desarrollo con Davirro.
+
+El blog tiene dos entradas:
+- Mi primera vez programando con bloques.
+- Mi primer proyecto: el Juego del Calamar.
 
 ## Archivos
 
-- `portfolio/`: inicio, descripción, CV y proyectos.
-- `portfolio/proyectos.py`: datos fijos de los proyectos.
-- `portfolio/static/`: estilos, imágenes y video de fondo.
-- `polls/`: aplicación de encuestas del tutorial.
-- `templates/base.html`: estructura común de las páginas.
 - `mysite/`: configuración y rutas.
+- `portfolio/`: páginas y proyectos.
+- `blog/`: entradas y comentarios.
+- `polls/`: encuestas del tutorial.
+- `templates/base.html`: estructura común de las páginas.
+- `db.sqlite3`: cuentas, entradas y otros datos.
+- `media/`: imágenes y videos subidos desde el admin.
 
-Los proyectos se cambian editando `portfolio/proyectos.py`.
-Usa Django 5.2 LTS y Python 3.12 o superior. Es para desarrollo local.
-
-Tests: `python manage.py test`.
-
-## Commit
-
-Para guardar este avance en tu repositorio:
+Usa Django 5.2 LTS y funciona con Python 3.12. Para probarlo:
 
 ```bash
-git add .
-git commit -m "add portfolio and polls"
+python manage.py test
 ```
 
-No borres la carpeta `.git` de tu repositorio. El ZIP contiene solo los archivos del proyecto.
-Si ya copiaste la versión completa, esta carpeta intermedia no debe mezclarse con los archivos
-viejos del blog: probala por separado antes de llevarla al repo.
+La configuración es para usar en la computadora, no para producción.
+No publiques `db.sqlite3`, y cambiá la contraseña del admin antes de subir el sitio a internet.
