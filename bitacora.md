@@ -4,11 +4,6 @@
 
 Hice el tutorial de la documentación (partes 1 a 8) con la app de encuestas `polls`.
 
-## Pasar mi página a Django
-
-- No entendía por qué el `index.html` tenía tan pocas líneas. Después vi que las plantillas usan `{% extends %}` y `{% block %}`, y que lo que se repite (navbar, modo oscuro) está en `base.html`.
-- Las imágenes y el CSS dejaron de cargar con las rutas de antes. Los moví a `static` y usé `{% static %}`.
-
 ## Errores que tuve
 
 - Al correr el servidor me salía `No module named 'debug_toolbar'`. Faltaba instalarlo. Lo arreglé con `python -m pip install -r requirements.txt`.
@@ -20,3 +15,29 @@ Hice el tutorial de la documentación (partes 1 a 8) con la app de encuestas `po
 
 - Subirlo a un hosting.
 - Poner categorías en el blog.
+
+
+## Tutorial de Django (partes 1 a 8)
+
+- Hice la app `polls`: modelos `Question` y `Choice`, vistas genéricas, templates, admin, tests y archivos estáticos.
+- En la parte 8 instalé `django-debug-toolbar`.
+
+## Migración del portfolio
+
+- **Dificultad:** las rutas relativas del HTML (`imagenes/...`, `styles.css`) dejaron de funcionar.
+  **Solución:** moví todo a `portfolio/static/portfolio/` y usé `{% static %}`. Las fuentes de `styles.css` siguen con rutas relativas porque están en la misma carpeta.
+- **Dificultad:** la navbar y el script del modo oscuro estaban repetidos en cada página.
+  **Solución:** un `base.html` del que heredan todas las páginas.
+- Las tres páginas de proyectos eran casi iguales, así que quedaron en un solo template y una vista que recibe el `slug`.
+
+## Blog
+
+- **Dificultad:** las imágenes y videos subidos desde el admin no se veían.
+  **Solución:** configurar `MEDIA_URL` / `MEDIA_ROOT` y servirlos en desarrollo desde `urls.py`.
+
+## Qué haría distinto / quedó en el tintero
+
+- Editor de texto enriquecido para las entradas (por ejemplo, Markdown).
+- Categorías o etiquetas y un buscador.
+- Deploy en un hosting.
+

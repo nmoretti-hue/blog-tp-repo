@@ -86,7 +86,6 @@ class BlogTests(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertTrue(User.objects.filter(username="nuevo").exists())
 
-
 class AdminCreaEntradaTests(TestCase):
     """Las entradas se cargan desde /admin, no desde el codigo."""
 
@@ -131,3 +130,37 @@ class AdminCreaEntradaTests(TestCase):
         self.assertTrue(post.imagen)
         self.client.logout()
         self.assertContains(self.client.get(reverse("blog:post_list")), post.titulo)
+
+class EntradasPersonalesTests(TestCase):
+    def setUp(self):
+        from io import StringIO
+        from tempfile import TemporaryDirectory
+        from django.core.management import call_command
+        from django.test import override_settings
+        self.media = TemporaryDirectory()
+        self.addCleanup(self.media.cleanup)
+        self.settings_override = override_settings(MEDIA_ROOT=self.media.name)
+        self.settings_override.enable()
+        self.addCleanup(self.settings_override.disable)
+        User.objects.create_superuser('nico', 'nico@example.com', 'test-password-934')
+        call_command('cargar_ejemplos', stdout=StringIO())
+
+    def test_ejemplos_personales_sin_duplicados(self):
+        from io import StringIO
+        from django.core.management import call_command
+        call_command('cargar_ejemplos', stdout=StringIO())
+        self.assertEqual(Post.objects.count(), 2)
+        self.assertTrue(Post.objects.filter(slug='mis-primeros-bloques').exists())
+        juego = Post.objects.get(slug='mi-primer-proyecto-juego-del-calamar')
+        self.assertIn('dos compañeros', juego.contenido)
+        self.assertIn('sprites', juego.contenido)
+        self.assertTrue(juego.imagen)
+
+    def test_nuevas_entradas_se_pueden_leer(self):
+        response = self.client.get(reverse('blog:post_list'))
+        self.assertContains(response, 'Mis primeros pasos programando')
+        for post in Post.objects.all():
+            response = self.client.get(post.get_absolute_url())
+            self.assertEqual(response.status_code, 200)
+            self.assertContains(response, post.titulo)
+>>>>>>> e67b288071008cb1d29441a89272e27c16e9c648
