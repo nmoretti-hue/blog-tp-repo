@@ -1,48 +1,40 @@
 # Portfolio de Nicolás Moretti
 
-Primer avance en Django: las páginas del portfolio y las encuestas del tutorial.
-Todavía no tiene blog, registro de lectores ni proyectos editables desde el admin.
+Mi página personal hecha con Django. Tiene mis proyectos, un blog con comentarios y la app de encuestas del tutorial.
 
-## Para abrirlo
-
-Desde la carpeta donde está `manage.py`:
+## Cómo correrlo
 
 ```bash
 python -m pip install -r requirements.txt
 python manage.py migrate
+python manage.py createsuperuser
 python manage.py runserver
 ```
 
-- Portfolio: http://127.0.0.1:8000/
+- Inicio: http://127.0.0.1:8000/
+- Blog: http://127.0.0.1:8000/blog/
+- Admin: http://127.0.0.1:8000/admin/
 - Encuestas: http://127.0.0.1:8000/polls/
-- Admin del tutorial: http://127.0.0.1:8000/admin/
 
-Para usar el admin, creá tu cuenta con `python manage.py createsuperuser`.
-Esta copia no incluye una base de datos ni una cuenta preconfigurada.
+## Blog
 
-## Archivos
+- Las entradas las crea solo el admin desde **/admin → Blog → Entradas**. Cada una tiene texto, imagen y video.
+- Se muestran ordenadas por fecha, la más nueva primero.
+- Para comentar hay que registrarse e ingresar.
+- Los comentarios los borra solo el admin (botón "Eliminar" en la entrada o desde /admin).
 
-- `portfolio/`: inicio, descripción, CV y proyectos.
-- `portfolio/proyectos.py`: datos fijos de los proyectos.
-- `portfolio/static/`: estilos, imágenes y video de fondo.
-- `polls/`: aplicación de encuestas del tutorial.
-- `templates/base.html`: estructura común de las páginas.
+## Proyectos
+
+Se editan desde **/admin → Portfolio → Proyectos** y aparecen en el inicio y en el menú.
+
+## Carpetas
+
 - `mysite/`: configuración y rutas.
+- `portfolio/`: páginas y proyectos.
+- `blog/`: entradas y comentarios.
+- `polls/`: encuestas del tutorial.
+- `templates/base.html`: la parte común de todas las páginas.
 
-Los proyectos se cambian editando `portfolio/proyectos.py`.
-Usa Django 5.2 LTS y Python 3.12 o superior. Es para desarrollo local.
+`db.sqlite3` y `media/` no se suben al repo, así que en una instalación nueva el blog arranca vacío y las entradas se cargan desde el admin.
 
-Tests: `python manage.py test`.
-
-## Commit
-
-Para guardar este avance en tu repositorio:
-
-```bash
-git add .
-git commit -m "add portfolio and polls"
-```
-
-No borres la carpeta `.git` de tu repositorio. El ZIP contiene solo los archivos del proyecto.
-Si ya copiaste la versión completa, esta carpeta intermedia no debe mezclarse con los archivos
-viejos del blog: probala por separado antes de llevarla al repo.
+Tests: `python manage.py test`

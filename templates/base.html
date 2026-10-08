@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/blog.css' %}">
     <script>
       // Aplica el modo oscuro antes de pintar la pagina para evitar el parpadeo
       if (localStorage.getItem("darkMode") === "true") {
@@ -27,7 +28,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          {% with url_name=request.resolver_match.url_name %}
+          {% with url_name=request.resolver_match.url_name ns=request.resolver_match.namespace %}
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link {% if url_name == 'home' %}active{% endif %}" href="{% url 'portfolio:home' %}">Inicio</a>
@@ -41,16 +42,28 @@
               </a>
               <ul class="dropdown-menu">
                 {% for item in proyectos_menu %}
-                  <li><a class="dropdown-item" href="{% url 'portfolio:proyecto' item.slug %}">{{ item.titulo }}</a></li>
+                  <li><a class="dropdown-item" href="{{ item.get_absolute_url }}">{{ item.titulo }}</a></li>
                 {% empty %}
                   <li><span class="dropdown-item-text">Sin proyectos publicados</span></li>
                 {% endfor %}
               </ul>
             </li>
-
+            <li class="nav-item">
+              <a class="nav-link {% if ns == 'blog' %}active{% endif %}" href="{% url 'blog:post_list' %}">Blog</a>
+            </li>
           </ul>
           {% endwith %}
           <div class="nav-acciones">
+            {% if user.is_authenticated %}
+              <span class="nav-usuario"><i class="fa-solid fa-user" aria-hidden="true"></i> {{ user.username }}</span>
+              <form action="{% url 'logout' %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <button class="btn-dark-mode" type="submit">Salir</button>
+              </form>
+            {% else %}
+              <a class="btn-dark-mode" href="{% url 'login' %}?next={{ request.path|urlencode }}">Ingresar</a>
+              <a class="btn-dark-mode" href="{% url 'signup' %}">Registrarse</a>
+            {% endif %}
             <button class="btn-dark-mode" type="button" onclick="myFunction()" aria-label="Activar o desactivar modo oscuro">Dark</button>
           </div>
         </div>
@@ -58,13 +71,21 @@
     </nav>
   </header>
 
+  {% if messages %}
+    <div class="container mensajes">
+      {% for message in messages %}
+        <div class="mensaje mensaje-{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
   {% block content %}{% endblock %}
 
   <video autoplay muted loop id="video-fondo">
     <source src="{% static 'portfolio/videos/background.mp4' %}" type="video/mp4">
   </video>
 
-  <footer class="site-footer">Portfolio de Nicolas Moretti | <a href="{% url 'portfolio:home' %}">Inicio</a></footer>
+  <footer class="site-footer">Portfolio de Nicolas Moretti | <a href="{% url 'portfolio:home' %}">Inicio</a> | <a href="{% url 'blog:post_list' %}">Blog</a></footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>

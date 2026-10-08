@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Blog - Mi portfolio{% endblock %}
+{% block content %}
+  <main class="container blog-container">
+    <div class="text-center mb-5">
+      <h1>El blog de Nico</h1>
+      <p class="subtitulo">Mis primeros pasos programando</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        {% for post in posts %}
+          <article class="card-descripcion post-card mb-4">
+            {% if post.imagen %}
+              <a href="{{ post.get_absolute_url }}"><img src="{{ post.imagen.url }}" class="post-card-img" alt="{{ post.titulo }}"></a>
+            {% endif %}
+            <p class="post-fecha"><i class="fa-regular fa-calendar" aria-hidden="true"></i> {{ post.fecha_publicacion|date:"j \d\e F \d\e Y" }}
+              · <i class="fa-regular fa-comment" aria-hidden="true"></i> {{ post.comentarios.count }}
+              {% if post.video %}· <i class="fa-solid fa-video" aria-hidden="true"></i> video{% endif %}</p>
+            <h2><a href="{{ post.get_absolute_url }}">{{ post.titulo }}</a></h2>
+            <p class="texto-card">{{ post.resumen }}</p>
+            <a class="cv-button" href="{{ post.get_absolute_url }}">Leer más</a>
+          </article>
+        {% empty %}
+          <section class="card-descripcion text-center">
+            <p class="texto-card text-center">Todavía no hay entradas publicadas.</p>
+          </section>
+        {% endfor %}
+
+        {% if is_paginated %}
+          <nav class="paginacion" aria-label="Paginación del blog">
+            {% if page_obj.has_previous %}
+              <a class="cv-button" href="?page={{ page_obj.previous_page_number }}">&larr; Más nuevas</a>
+            {% endif %}
+            <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+            {% if page_obj.has_next %}
+              <a class="cv-button" href="?page={{ page_obj.next_page_number }}">Más viejas &rarr;</a>
+            {% endif %}
+          </nav>
+        {% endif %}
+      </div>
+    </div>
+  </main>
+{% endblock %}

@@ -548,39 +548,3 @@ body.dark-mode .skill-badge {
     flex-direction: column;
   }
 }
-.project-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 8px;
-}
-
-.project-card {
-  display: flex;
-  flex-direction: column;
-  min-width: 200px;
-  padding: 14px 18px;
-  border-radius: var(--radio-panel);
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  color: var(--color-principal);
-  font-size: 15px;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-2px);
-  color: #367f9d;
-}
-
-.project-card span {
-  color: var(--color-secundario);
-  font-size: 12px;
-}
-
-
-.nav-acciones { display: flex; align-items: center; gap: 8px; }
-body.dark-mode .project-card { background-color: var(--color-principal); color: white; }
-body.dark-mode .project-card span { color: #dddddd; }

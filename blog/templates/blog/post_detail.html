@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}{{ post.titulo }} - Blog{% endblock %}
+{% block content %}
+  <main class="container blog-container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <article class="card-descripcion post-detalle mb-4">
+          <a class="volver" href="{% url 'blog:post_list' %}">&larr; Volver al blog</a>
+          <h1>{{ post.titulo }}</h1>
+          <p class="post-fecha text-center">{{ post.fecha_publicacion|date:"j \d\e F \d\e Y" }} · por {{ post.autor.get_full_name|default:post.autor.username }}</p>
+
+          {% if post.imagen %}
+            <img src="{{ post.imagen.url }}" class="post-imagen" alt="{{ post.titulo }}">
+          {% endif %}
+
+          <div class="texto-card post-contenido">{{ post.contenido|linebreaks }}</div>
+
+          {% if post.video %}
+            <video class="post-video" controls preload="metadata">
+              <source src="{{ post.video.url }}">
+              Tu navegador no soporta video.
+            </video>
+          {% endif %}
+        </article>
+
+        <section class="card-descripcion" id="comentarios">
+          <h2>Comentarios ({{ comentarios|length }})</h2>
+
+          {% for comentario in comentarios %}
+            <div class="comentario">
+              <div class="comentario-cabecera">
+                <strong><i class="fa-solid fa-user" aria-hidden="true"></i> {{ comentario.autor.username }}</strong>
+                <span>{{ comentario.creado|date:"j/m/Y H:i" }}</span>
+              </div>
+              <p class="texto-card">{{ comentario.texto|linebreaksbr }}</p>
+              {% if user.is_staff %}
+                <form action="{% url 'blog:eliminar_comentario' comentario.pk %}" method="post" onsubmit="return confirm('¿Eliminar este comentario?');">
+                  {% csrf_token %}
+                  <button type="submit" class="btn-eliminar"><i class="fa-solid fa-trash" aria-hidden="true"></i> Eliminar</button>
+                </form>
+              {% endif %}
+            </div>
+          {% empty %}
+            <p class="texto-card">Todavía no hay comentarios. ¡Sé el primero!</p>
+          {% endfor %}
+
+          {% if user.is_authenticated %}
+            <form method="post" class="form-blog">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" class="cv-button">Comentar</button>
+            </form>
+          {% else %}
+            <p class="texto-card">
+              <a href="{% url 'login' %}?next={{ request.path|urlencode }}">Ingresá</a> o
+              <a href="{% url 'signup' %}">registrate</a> para dejar un comentario.
+            </p>
+          {% endif %}
+        </section>
+      </div>
+    </div>
+  </main>
+{% endblock %}
