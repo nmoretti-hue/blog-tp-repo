@@ -62,10 +62,9 @@ Se editan desde **/admin → Portfolio → Proyectos** y aparecen en el inicio y
 - `polls/`: encuestas del tutorial.
 - `templates/base.html`: la parte común de todas las páginas.
 
-`db.sqlite3` y `media/` no se suben al repo, así que en una instalación nueva el blog arranca vacío y las entradas se cargan desde el admin.
+La copia actual incluye datos de ejemplo y archivos multimedia. No uses la cuenta incluida en produccion.
 
 Tests: `python manage.py test`
-=======
 - `templates/base.html`: estructura común de las páginas.
 - `db.sqlite3`: cuentas, entradas y otros datos.
 - `media/`: imágenes y videos subidos desde el admin.
@@ -77,3 +76,13 @@ python manage.py test
 ```
 La configuración es para usar en la computadora, no para producción.
 No publiques `db.sqlite3`, y cambiá la contraseña del admin antes de subir el sitio a internet.
+
+## Publicacion
+
+GitHub Pages usa la carpeta `docs/` de `main`. Para actualizarla:
+
+```bash
+python scripts/export_pages.py
+```
+
+Es una copia estatica: permite leer el portfolio y el blog, pero no tiene registro, comentarios ni admin. No incluye la base de datos. El sitio completo necesita Django en PythonAnywhere.

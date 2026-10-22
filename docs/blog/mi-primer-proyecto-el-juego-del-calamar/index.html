@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primer proyecto: el Juego del Calamar - Blog</title>
+    <link rel="icon" href="/blog-tp-repo/static/portfolio/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/blog-tp-repo/static/portfolio/styles.css">
+    <link rel="stylesheet" href="/blog-tp-repo/static/blog/blog.css">
+    <script>
+      // Aplica el modo oscuro antes de pintar la pagina para evitar el parpadeo
+      if (localStorage.getItem("darkMode") === "true") {
+        document.documentElement.classList.add("dark-mode-preload");
+      }
+    </script>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="https://www.instagram.com/bocajrs/">Moretti</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link " href="/blog-tp-repo/">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/blog-tp-repo/description/">Sobre mí</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Proyectos
+              </a>
+              <ul class="dropdown-menu">
+                
+                  <li><a class="dropdown-item" href="/blog-tp-repo/proyectos/juego-del-calamar/">EL JUEGO DEL CALAMAR</a></li>
+                
+                  <li><a class="dropdown-item" href="/blog-tp-repo/proyectos/pokemon/">POKEMON</a></li>
+                
+                  <li><a class="dropdown-item" href="/blog-tp-repo/proyectos/reproductor-de-musica/">REPRODUCTOR DE MÚSICA</a></li>
+                
+                  <li><a class="dropdown-item" href="/blog-tp-repo/proyectos/nuevo-siglo-propiedades/">Nuevo Siglo Propiedades</a></li>
+                
+                  <li><a class="dropdown-item" href="/blog-tp-repo/proyectos/instituto-zaccaria/">Instituto Zaccaria</a></li>
+                
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/blog-tp-repo/blog/">Blog</a>
+            </li>
+          </ul>
+          
+          <div class="nav-acciones">
+            
+              
+              
+            
+            <button class="btn-dark-mode" type="button" onclick="myFunction()" aria-label="Activar o desactivar modo oscuro">Dark</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+
+  
+  <main class="container blog-container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <article class="card-descripcion post-detalle mb-4">
+          <a class="volver" href="/blog-tp-repo/blog/">&larr; Volver al blog</a>
+          <h1>Mi primer proyecto: el Juego del Calamar</h1>
+          <p class="post-fecha text-center">8 de octubre de 2026 · por Nicomore999</p>
+
+          
+            <img src="/blog-tp-repo/media/blog/imagenes/menu.png" class="post-imagen" alt="Mi primer proyecto: el Juego del Calamar">
+          
+
+          <div class="texto-card post-contenido"><p>Mi primer proyecto fue un juego del Calamar que hice con dos compañeros. Era un trabajo para clase y tenía nota.</p>
+
+<p>Yo me encargué de los sprites y del menú. Nos llevó varias clases terminarlo.</p>
+
+<p>Después lo llevamos a la ExpoHuergo, pero nadie lo jugó.</p></div>
+
+          
+        </article>
+
+        <section class="card-descripcion" id="comentarios"><p class="texto-card">Esta es la version estatica del blog. Los comentarios y las cuentas necesitan el sitio Django.</p></section>
+      </div>
+    </div>
+  </main>
+
+
+  <video autoplay muted loop id="video-fondo">
+    <source src="/blog-tp-repo/static/portfolio/videos/background.mp4" type="video/mp4">
+  </video>
+
+  <footer class="site-footer">Portfolio de Nicolas Moretti | <a href="/blog-tp-repo/">Inicio</a> | <a href="/blog-tp-repo/blog/">Blog</a></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    if (localStorage.getItem("darkMode") === "true") {
+      document.body.classList.add("dark-mode");
+    }
+    document.documentElement.classList.remove("dark-mode-preload");
+
+    function myFunction() {
+      var element = document.body;
+      element.classList.toggle("dark-mode");
+      localStorage.setItem("darkMode", element.classList.contains("dark-mode"));
+    }
+  </script>
+</body>
+</html>

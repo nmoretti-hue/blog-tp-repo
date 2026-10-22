@@ -163,4 +163,3 @@ class EntradasPersonalesTests(TestCase):
             response = self.client.get(post.get_absolute_url())
             self.assertEqual(response.status_code, 200)
             self.assertContains(response, post.titulo)
->>>>>>> e67b288071008cb1d29441a89272e27c16e9c648

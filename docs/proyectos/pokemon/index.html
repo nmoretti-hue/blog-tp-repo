@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon - Mi portfolio</title>
+    <link rel="icon" href="/blog-tp-repo/static/portfolio/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/blog-tp-repo/static/portfolio/styles.css">
+    <link rel="stylesheet" href="/blog-tp-repo/static/blog/blog.css">
+    <script>
+      // Aplica el modo oscuro antes de pintar la pagina para evitar el parpadeo
+      if (localStorage.getItem("darkMode") === "true") {
+        document.documentElement.classList.add("dark-mode-preload");
+      }
+    </script>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="https://www.instagram.com/bocajrs/">Moretti</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link " href="/blog-tp-repo/">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/blog-tp-repo/description/">Sobre mí</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Proyectos
+              </a>
+              <ul class="dropdown-menu">
+                
+                  <li><a class="dropdown-item" href="/blog-tp-repo/proyectos/juego-del-calamar/">EL JUEGO DEL CALAMAR</a></li>
+                
+                  <li><a class="dropdown-item" href="/blog-tp-repo/proyectos/pokemon/">POKEMON</a></li>
+                
+                  <li><a class="dropdown-item" href="/blog-tp-repo/proyectos/reproductor-de-musica/">REPRODUCTOR DE MÚSICA</a></li>
+                
+                  <li><a class="dropdown-item" href="/blog-tp-repo/proyectos/nuevo-siglo-propiedades/">Nuevo Siglo Propiedades</a></li>
+                
+                  <li><a class="dropdown-item" href="/blog-tp-repo/proyectos/instituto-zaccaria/">Instituto Zaccaria</a></li>
+                
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/blog-tp-repo/blog/">Blog</a>
+            </li>
+          </ul>
+          
+          <div class="nav-acciones">
+            
+              
+              
+            
+            <button class="btn-dark-mode" type="button" onclick="myFunction()" aria-label="Activar o desactivar modo oscuro">Dark</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+
+  
+  <main>
+    <section class="text-center" aria-labelledby="proyecto-titulo">
+      <h1 id="proyecto-titulo">POKEMON</h1>
+      <p>Terminado</p>
+      <p id="description">Este juego fue desarrollado por mi<br>En este juego fue un trabajo con nota que realice El proyecto en ser terminado tardo varias clases<br>Me saque un 8 en este proyecto</p>
+      <a class="project-button" href="https://github.com/nmoretti-hue/pokemoncitos.git" target="_blank" rel="noopener noreferrer">Ver proyecto</a>
+    </section>
+
+    
+    
+    <div class="d-flex justify-content-center my-4">
+      <div id="carouselProyecto" class="carousel slide carrusel-grande" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          
+            <button type="button" data-bs-target="#carouselProyecto" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          
+            <button type="button" data-bs-target="#carouselProyecto" data-bs-slide-to="1"  aria-label="Slide 2"></button>
+          
+            <button type="button" data-bs-target="#carouselProyecto" data-bs-slide-to="2"  aria-label="Slide 3"></button>
+          
+        </div>
+        <div class="carousel-inner">
+          
+            <div class="carousel-item active">
+              
+                <img src="/blog-tp-repo/static/portfolio/imagenes/pokemonardo.jfif" class="d-block w-100 carrusel-img" alt="portada pokemon">
+              
+            </div>
+          
+            <div class="carousel-item ">
+              
+                <img src="/blog-tp-repo/static/portfolio/imagenes/Capturapokemon.png" class="d-block w-100 carrusel-img" alt="captura pokemon">
+              
+            </div>
+          
+            <div class="carousel-item ">
+              
+                <img src="/blog-tp-repo/static/portfolio/imagenes/segundaCapturapokemon.png" class="d-block w-100 carrusel-img" alt="segunda captura pokemon">
+              
+            </div>
+          
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselProyecto" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselProyecto" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    
+    
+  </main>
+
+
+  <video autoplay muted loop id="video-fondo">
+    <source src="/blog-tp-repo/static/portfolio/videos/background.mp4" type="video/mp4">
+  </video>
+
+  <footer class="site-footer">Portfolio de Nicolas Moretti | <a href="/blog-tp-repo/">Inicio</a> | <a href="/blog-tp-repo/blog/">Blog</a></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    if (localStorage.getItem("darkMode") === "true") {
+      document.body.classList.add("dark-mode");
+    }
+    document.documentElement.classList.remove("dark-mode-preload");
+
+    function myFunction() {
+      var element = document.body;
+      element.classList.toggle("dark-mode");
+      localStorage.setItem("darkMode", element.classList.contains("dark-mode"));
+    }
+  </script>
+</body>
+</html>
